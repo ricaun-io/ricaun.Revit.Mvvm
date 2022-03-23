@@ -11,11 +11,13 @@
     <Grid Background="WhiteSmoke">
         <StackPanel Margin="15">
             <Button Height="24" Margin="0 0 0 8" Command="{Binding MessageBoxCommand}">MessageBox</Button>
-            <TextBox Height="24" Margin="0 0 0 8" VerticalContentAlignment="Center" Text="{Binding Text}" AcceptsReturn="True" ></TextBox>
-            <TextBox Height="24" Margin="0 0 0 8" VerticalContentAlignment="Center" Text="{Binding Text}" IsEnabled="false"></TextBox>
+            <TextBox Height="24" Margin="0 0 0 8" VerticalContentAlignment="Center" Text="{Binding Model.Text}" AcceptsReturn="True" ></TextBox>
+            <TextBox Height="24" Margin="0 0 0 8" VerticalContentAlignment="Center" Text="{Binding Model.Text}" IsEnabled="false"></TextBox>
 
-            <ListBox Height="120" Margin="0 0 0 8" ItemsSource="{Binding Items}" SelectedItem="{Binding Item, Mode=TwoWay}"></ListBox>
-            <TextBox Height="24" Margin="0 0 0 8" VerticalContentAlignment="Center" Text="{Binding Item}" IsEnabled="false"></TextBox>
+            <ListBox Height="120" Margin="0 0 0 8" 
+                     ItemsSource="{Binding Model.Items}" 
+                     SelectedItem="{Binding Model.Item}"
+                     ></ListBox>
             <Grid Height="24">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

@@ -15,31 +15,41 @@ namespace ricaun.Revit.Mvvm.Example.ViewModels
                 return string.Format("{0}", Name);
             }
         }
-        public ObservableCollection<ItemModel> Items { get; private set; }
-        public ItemModel Item { get; set; }
-        public string Text { get; set; } = "Text";
+
+        public class MainModel
+        {
+            public ObservableCollection<ItemModel> Items { get; private set; }
+            public ItemModel Item { get; set; }
+            public string Text { get; set; } = "Text";
+            public MainModel()
+            {
+                Items = new ObservableCollection<ItemModel>();
+                for (int i = 0; i < 5; i++)
+                {
+                    Items.Add(new ItemModel() { Name = $"{i}" });
+                }
+            }
+        }
+
+        public MainModel Model { get; }
         public IRelayCommand MessageBoxCommand { get; }
         public IRelayCommand AddCommand { get; }
         public IRelayCommand RemoveCommand { get; }
         public MainViewModel()
         {
-            MessageBoxCommand = new RelayCommand(() => { System.Windows.MessageBox.Show(Text); });
-            AddCommand = new RelayCommand(() => { Items.Add(new ItemModel() { Name = DateTime.Now.ToString() }); });
+            MessageBoxCommand = new RelayCommand(() => { System.Windows.MessageBox.Show(Model.Text); });
+            AddCommand = new RelayCommand(() =>
+            {
+                Model.Items.Add(new ItemModel() { Name = DateTime.Now.ToString() });
+            });
             RemoveCommand = new RelayCommand(() =>
             {
-                Console.WriteLine(Item);
-                try
-                {
-                    if (Items.Count > 0)
-                        Items.RemoveAt(0);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                    throw;
-                }
+                Model.Items.Remove(Model.Item);
+                if (Model.Items.Count > 0)
+                    Model.Item = Model.Items[0];
+                RefreshProperty(nameof(Model));
             });
-            Items = new ObservableCollection<ItemModel>();
+            Model = new MainModel();
         }
 
         MainView mainView;

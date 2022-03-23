@@ -138,4 +138,8 @@
     <ProjectReference Include="..\ricaun.Revit.Mvvm\ricaun.Revit.Mvvm.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>
