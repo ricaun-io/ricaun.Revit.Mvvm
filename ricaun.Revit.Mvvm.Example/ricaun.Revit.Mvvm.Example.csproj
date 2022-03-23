@@ -61,7 +61,7 @@
   <!-- Release -->
   <PropertyGroup Condition="!$(Configuration.Contains('Debug'))">
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\$(RevitVersion)</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>Revit$(RevitVersion)</DefineConstants>
     <NoWarn>MSB3052</NoWarn>
     <DebugType>None</DebugType>
@@ -123,15 +123,19 @@
     <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" IncludeAssets="compile; build" PrivateAssets="all" />
   </ItemGroup>
   <PropertyGroup>
-    <WeaverConfiguration >
+    <WeaverConfiguration>
       <Weavers>
-        <PropertyChanged/>
+        <PropertyChanged />
       </Weavers>
     </WeaverConfiguration>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*" IncludeAssets="build; compile" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ricaun.Revit.Mvvm\ricaun.Revit.Mvvm.csproj" />
   </ItemGroup>
 
 </Project>
