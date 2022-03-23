@@ -41,12 +41,29 @@
             "VSCode"
           ]
         },
+        "InstallationFiles": {
+          "type": "string"
+        },
+        "IssConfiguration": {
+          "type": "string"
+        },
         "MainName": {
           "type": "string"
+        },
+        "NewVersions": {
+          "type": "boolean"
         },
         "NoLogo": {
           "type": "boolean",
           "description": "Disables displaying the NUKE logo"
+        },
+        "NugetApiKey": {
+          "type": "string",
+          "default": "Secrets must be entered via 'nuke :secret [profile]'"
+        },
+        "NugetApiUrl": {
+          "type": "string",
+          "default": "Secrets must be entered via 'nuke :secret [profile]'"
         },
         "Partition": {
           "type": "string",
@@ -62,6 +79,18 @@
           "items": {
             "type": "string"
           }
+        },
+        "ProjectNameFolder": {
+          "type": "boolean"
+        },
+        "ProjectVersionFolder": {
+          "type": "boolean"
+        },
+        "ReleaseBundle": {
+          "type": "boolean"
+        },
+        "ReleasePackageBuilder": {
+          "type": "boolean"
         },
         "Root": {
           "type": "string",
@@ -85,6 +114,8 @@
               "Clean",
               "Compile",
               "GitRelease",
+              "Pack",
+              "PackageBuilder",
               "Release",
               "Sign"
             ]
@@ -104,10 +135,18 @@
               "Clean",
               "Compile",
               "GitRelease",
+              "Pack",
+              "PackageBuilder",
               "Release",
               "Sign"
             ]
           }
+        },
+        "VendorDescription": {
+          "type": "string"
+        },
+        "VendorId": {
+          "type": "string"
         },
         "Verbosity": {
           "type": "string",

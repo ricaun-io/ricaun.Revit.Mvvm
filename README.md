@@ -1,5 +1,7 @@
 # ricaun.Revit.Mvvm
 
+Mvvm for Revit with `RelayCommand` and `ObservableObject` to use with [PropertyChanged.Fody](https://github.com/Fody/PropertyChanged) package.
+
 [![Revit 2017](https://img.shields.io/badge/Revit-2017+-blue.svg)](../..)
 [![Visual Studio 2019](https://img.shields.io/badge/Visual%20Studio%202019-16.11.7+-blue)](../..)
 [![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://nuke.build/)
@@ -11,10 +13,26 @@
 
 * [Latest release](../../releases/latest)
 
+## Example
+
+```xml
+  <!-- Fody -->
+  <ItemGroup>
+    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" IncludeAssets="compile; build" PrivateAssets="all" />
+  </ItemGroup>
+  <PropertyGroup>
+    <WeaverConfiguration >
+      <Weavers>
+        <PropertyChanged/>
+      </Weavers>
+    </WeaverConfiguration>
+  </PropertyGroup>
+```
+
 ## License
 
 This project is [licensed](LICENSE) under the [MIT Licence](https://en.wikipedia.org/wiki/MIT_License).
 
 ---
 
-Do you like this package? Please [star this project on GitHub](../../stargazers)!
+Do you like this project? Please [star this project on GitHub](../../stargazers)!

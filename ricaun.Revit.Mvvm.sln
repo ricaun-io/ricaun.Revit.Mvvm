@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{E2
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ricaun.Revit.Mvvm.Example", "ricaun.Revit.Mvvm.Example\ricaun.Revit.Mvvm.Example.csproj", "{38FF241E-F70A-4895-9236-9425A09F4B5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{4E2BC61C-2D7A-454A-BC16-5EC08CB055C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E2BC61C-2D7A-454A-BC16-5EC08CB055C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E2BC61C-2D7A-454A-BC16-5EC08CB055C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38FF241E-F70A-4895-9236-9425A09F4B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38FF241E-F70A-4895-9236-9425A09F4B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38FF241E-F70A-4895-9236-9425A09F4B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38FF241E-F70A-4895-9236-9425A09F4B5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
