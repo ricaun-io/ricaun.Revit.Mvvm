@@ -14,7 +14,8 @@ namespace ricaun.Revit.Mvvm.Example.Revit
             ribbonPanel = application.CreatePanel("Mvvm");
             ribbonPanel.AddPushButton<Commands.Command>()
                 .SetText("Example")
-                .SetLargeImage(Properties.Resource.Icon);
+                .SetLargeImage(Properties.Resource.Icon)
+                .SetToolTip(LanguageExtension.GetLanguageType().ToString());
 
             return Result.Succeeded;
         }

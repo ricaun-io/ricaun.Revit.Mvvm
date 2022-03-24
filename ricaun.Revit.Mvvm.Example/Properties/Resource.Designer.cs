@@ -61,7 +61,7 @@ namespace ricaun.Revit.Mvvm.Example.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://forested-image-generator.glitch.me/image/32/000000/circle.png.
+        ///   Looks up a localized string similar to https://forested-image-generator.glitch.me/image/32/007700/circle.png.
         /// </summary>
         internal static string Icon {
             get {
