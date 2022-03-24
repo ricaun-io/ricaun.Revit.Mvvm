@@ -11,9 +11,9 @@ namespace ricaun.Revit.Mvvm
     /// </summary>
     public interface IRelayCommand : ICommand
     {
-        /// <summary>
-        /// Notifies that the <see cref="ICommand.CanExecute"/> property has changed.
-        /// </summary>
+        ///// <summary>
+        ///// Notifies that the <see cref="ICommand.CanExecute"/> property has changed.
+        ///// </summary>
         //void NotifyCanExecuteChanged();
     }
 }
