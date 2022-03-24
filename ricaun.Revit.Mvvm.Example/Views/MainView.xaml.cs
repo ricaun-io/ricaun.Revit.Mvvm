@@ -1,4 +1,5 @@
 ﻿using ricaun.Revit.Mvvm.Example.ViewModels;
+using ricaun.Revit.UI;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -13,6 +14,7 @@ namespace ricaun.Revit.Mvvm.Example.Views
             InitializeWindow();
             this.Title = nameof(MainView);
             this.DataContext = viewModel;
+            this.Icon = Properties.Resource.Icon.GetBitmapSource();
         }
 
         #region InitializeWindow

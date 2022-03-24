@@ -141,7 +141,6 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-
   <!-- Fody -->
   <ItemGroup>
     <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" IncludeAssets="compile; build" PrivateAssets="all" />
@@ -153,9 +152,11 @@
       </Weavers>
     </WeaverConfiguration>
   </PropertyGroup>
-
+  <!-- 
+  
   <ItemGroup>
     <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*" IncludeAssets="build; compile" PrivateAssets="All" />
   </ItemGroup>
+  -->
 
 </Project>

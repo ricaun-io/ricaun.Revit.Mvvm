@@ -12,6 +12,10 @@ namespace ricaun.Revit.Mvvm.Example.Revit
         public Result OnStartup(UIControlledApplication application)
         {
             ribbonPanel = application.CreatePanel("Mvvm");
+            ribbonPanel.AddPushButton<Commands.Command>()
+                .SetText("Example")
+                .SetLargeImage(Properties.Resource.Icon);
+
             return Result.Succeeded;
         }
 

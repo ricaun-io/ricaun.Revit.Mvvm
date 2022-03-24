@@ -12,8 +12,13 @@
         <StackPanel Margin="15">
             <Button Height="24" Margin="0 0 0 8" Command="{Binding MessageBoxCommand}">MessageBox</Button>
             <TextBox Height="24" Margin="0 0 0 8" VerticalContentAlignment="Center" Text="{Binding Model.Text}" AcceptsReturn="True" ></TextBox>
-            <TextBox Height="24" Margin="0 0 0 8" VerticalContentAlignment="Center" Text="{Binding Model.Text}" IsEnabled="false"></TextBox>
+            <Grid Height="24" Margin="4 0 0 0">
+                <TextBlock Text="{Binding Model.Text}"></TextBlock>
+            </Grid>
 
+            <Grid Height="24" Margin="4 0 0 0">
+                <TextBlock Text="{Binding Model.Item}"></TextBlock>
+            </Grid>
             <ListBox Height="120" Margin="0 0 0 8" 
                      ItemsSource="{Binding Model.Items}" 
                      SelectedItem="{Binding Model.Item}"

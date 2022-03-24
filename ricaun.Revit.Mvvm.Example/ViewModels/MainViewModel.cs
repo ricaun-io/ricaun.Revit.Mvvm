@@ -1,4 +1,5 @@
 ﻿using ricaun.Revit.Mvvm.Example.Views;
+using ricaun.Revit.Mvvm.Example.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,30 +8,6 @@ namespace ricaun.Revit.Mvvm.Example.ViewModels
 {
     public class MainViewModel : ObservableObject
     {
-        public class ItemModel
-        {
-            public string Name { get; set; }
-            public override string ToString()
-            {
-                return string.Format("{0}", Name);
-            }
-        }
-
-        public class MainModel
-        {
-            public ObservableCollection<ItemModel> Items { get; private set; }
-            public ItemModel Item { get; set; }
-            public string Text { get; set; } = "Text";
-            public MainModel()
-            {
-                Items = new ObservableCollection<ItemModel>();
-                for (int i = 0; i < 5; i++)
-                {
-                    Items.Add(new ItemModel() { Name = $"{i}" });
-                }
-            }
-        }
-
         public MainModel Model { get; }
         public IRelayCommand MessageBoxCommand { get; }
         public IRelayCommand AddCommand { get; }
@@ -41,6 +18,8 @@ namespace ricaun.Revit.Mvvm.Example.ViewModels
             AddCommand = new RelayCommand(() =>
             {
                 Model.Items.Add(new ItemModel() { Name = DateTime.Now.ToString() });
+                Model.Item = Model.Items[0];
+                RefreshProperty(nameof(Model));
             });
             RemoveCommand = new RelayCommand(() =>
             {
@@ -61,7 +40,7 @@ namespace ricaun.Revit.Mvvm.Example.ViewModels
                 mainView.Closed += (s, e) => { mainView = null; };
             }
             mainView.Activate();
-            mainView.Show();
+            mainView.ShowDialog();
         }
     }
 }
