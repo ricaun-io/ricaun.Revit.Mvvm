@@ -8,6 +8,7 @@ Mvvm for Revit with `RelayCommand` and `ObservableObject` to use with [PropertyC
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Publish](../../actions/workflows/Publish.yml/badge.svg)](../../actions)
 [![Develop](../../actions/workflows/Develop.yml/badge.svg)](../../actions)
+[![Release](https://img.shields.io/nuget/v/ricaun.Revit.Mvvm?logo=nuget&label=release&color=blue)](https://www.nuget.org/packages/ricaun.Revit.Mvvm)
 
 ## Release
 
