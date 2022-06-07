@@ -97,10 +97,14 @@ namespace ricaun.Revit.Mvvm
             {
                 if (SetPropertyAndNotifyOnCompletion(ref this.executionTask, value, _ =>
                 {
-
+                    // When the task completes
+                    //OnPropertyChanged(IsRunningChangedEventArgs);
+                    //OnPropertyChanged(CanBeCanceledChangedEventArgs);
                 }))
                 {
-
+                    // When setting the task
+                    //OnPropertyChanged(IsRunningChangedEventArgs);
+                    //OnPropertyChanged(CanBeCanceledChangedEventArgs);
                 }
             }
         }
