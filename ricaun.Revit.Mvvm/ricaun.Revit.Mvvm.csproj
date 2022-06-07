@@ -77,7 +77,7 @@
 
   <PropertyGroup>
     <PackageId>ricaun.Revit.Mvvm</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <ProjectGuid>{54A2E2C0-8117-41F9-BC25-463ADF77E7DC}</ProjectGuid>
   </PropertyGroup>
 
@@ -152,11 +152,5 @@
       </Weavers>
     </WeaverConfiguration>
   </PropertyGroup>
-  <!-- 
-  
-  <ItemGroup>
-    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="$(RevitVersion).*" IncludeAssets="build; compile" PrivateAssets="All" />
-  </ItemGroup>
-  -->
 
 </Project>

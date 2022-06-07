@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace ricaun.Revit.Mvvm.Example.Models
+﻿namespace ricaun.Revit.Mvvm.Example.Models
 {
     public class MainModel
     {
