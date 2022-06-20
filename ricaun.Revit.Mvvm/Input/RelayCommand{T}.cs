@@ -77,13 +77,16 @@ namespace ricaun.Revit.Mvvm
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
-            if (default(T) is not null &&
-                parameter is null)
-            {
-                return false;
-            }
+            if (this.canExecute == null)
+                return true;
 
-            return CanExecute((T)parameter);
+            if (parameter == null && typeof(T).IsValueType)
+                return CanExecute(default(T));
+
+            if (parameter is T parameterT)
+                return CanExecute(parameterT);
+
+            return false;
         }
 
         /// <summary>
@@ -104,7 +107,10 @@ namespace ricaun.Revit.Mvvm
         /// <param name="parameter"></param>
         public void Execute(object parameter)
         {
-            Execute((T)parameter);
+            if (CanExecute(parameter))
+            {
+                Execute((T)parameter);
+            }
         }
     }
 }
