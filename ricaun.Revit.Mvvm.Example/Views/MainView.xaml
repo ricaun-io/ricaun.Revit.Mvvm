@@ -28,8 +28,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Command="{Binding AddCommand}">Add</Button>
-                <Button Grid.Column="1" Command="{Binding RemoveCommand}">Remove</Button>
+                <Button Grid.Column="0" Command="{Binding AddCommand}" CommandParameter="{Binding Model.Item}">Add</Button>
+                <Button Grid.Column="1" Command="{Binding RemoveCommand}" CommandParameter="{Binding Model.Item}">Remove</Button>
             </Grid>
         </StackPanel>
     </Grid>
