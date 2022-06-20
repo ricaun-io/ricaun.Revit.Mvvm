@@ -97,7 +97,7 @@
 
   <PropertyGroup>
     <AssemblyName>$(PackageId)$(PackageAssemblyVersion)</AssemblyName>
-    <Description>Revit Package $(PackageId).</Description>
+    <Description>Mvvm for Revit with RelayCommand and ObservableObject to use with PropertyChanged.Fody package.</Description>
     <Product>$(PackageId)</Product>
     <Copyright>Copyright © $(CopyrightYears) $(Company)</Copyright>
   </PropertyGroup>
