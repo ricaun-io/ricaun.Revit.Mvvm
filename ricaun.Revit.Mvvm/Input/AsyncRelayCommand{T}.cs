@@ -1,7 +1,10 @@
-// This file is inspired from the Microsoft.Toolkit.Mvvm library
+﻿// This file is inspired from the Microsoft.Toolkit.Mvvm library and AsyncVoid
 // https://github.com/CommunityToolkit/WindowsCommunityToolkit
+// https://github.com/johnthiriet/AsyncVoid
 
+using ricaun.Revit.Mvvm.Extensions;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace ricaun.Revit.Mvvm
@@ -13,17 +16,18 @@ namespace ricaun.Revit.Mvvm
     /// in the <see cref="Execute(T)"/> and <see cref="CanExecute(T)"/> callback methods.
     /// </summary>
     /// <typeparam name="T">The type of parameter being passed as input to the callbacks.</typeparam>
-    public sealed class RelayCommand<T> : IRelayCommand<T>
+    public sealed class AsyncRelayCommand<T> : IAsyncRelayCommand<T>
     {
         /// <summary>
         /// The <see cref="Action"/> to invoke when <see cref="Execute(T)"/> is used.
         /// </summary>
-        private readonly Action<T> execute;
+        private readonly Func<T, Task> execute;
+
 
         /// <summary>
         /// The optional action to invoke when <see cref="CanExecute(T)"/> is used.
         /// </summary>
-        private readonly Predicate<T> canExecute;
+        private readonly Func<T, bool> canExecute;
 
         /// <summary>
         /// CanExecuteChanged
@@ -35,7 +39,15 @@ namespace ricaun.Revit.Mvvm
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RelayCommand{T}"/> class that can always execute.
+        /// RaiseCanExecuteChanged
+        /// </summary>
+        public void RaiseCanExecuteChanged()
+        {
+            CommandManager.InvalidateRequerySuggested();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AsyncRelayCommand{T}"/> class that can always execute.
         /// </summary>
         /// <param name="execute">The execution logic.</param>
         /// <remarks>
@@ -43,18 +55,18 @@ namespace ricaun.Revit.Mvvm
         /// nullable <see cref="object"/> parameter, it is recommended that if <typeparamref name="T"/> is a reference type,
         /// you should always declare it as nullable, and to always perform checks within <paramref name="execute"/>.
         /// </remarks>
-        public RelayCommand(Action<T> execute)
+        public AsyncRelayCommand(Func<T, Task> execute)
         {
             this.execute = execute;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RelayCommand{T}"/> class.
+        /// Initializes a new instance of the <see cref="AsyncRelayCommand{T}"/> class.
         /// </summary>
         /// <param name="execute">The execution logic.</param>
         /// <param name="canExecute">The execution status logic.</param>
-        /// <remarks>See notes in <see cref="RelayCommand{T}(Action{T})"/>.</remarks>
-        public RelayCommand(Action<T> execute, Predicate<T> canExecute)
+        /// <remarks>See notes in <see cref="AsyncRelayCommand{T}(Func{T, Task})"/>.</remarks>
+        public AsyncRelayCommand(Func<T, Task> execute, Func<T, bool> canExecute)
         {
             this.execute = execute;
             this.canExecute = canExecute;
@@ -77,6 +89,9 @@ namespace ricaun.Revit.Mvvm
         /// <returns></returns>
         public bool CanExecute(object parameter)
         {
+            if (IsExecuting)
+                return false;
+
             if (parameter is T parameterT)
                 return CanExecute(parameterT);
 
@@ -89,8 +104,7 @@ namespace ricaun.Revit.Mvvm
         /// <param name="parameter"></param>
         public void Execute(T parameter)
         {
-            if (CanExecute(parameter))
-                this.execute(parameter);
+            this.ExecuteAsync(parameter).Run();
         }
 
         /// <summary>
@@ -101,6 +115,37 @@ namespace ricaun.Revit.Mvvm
         {
             if (parameter is T parameterT)
                 Execute(parameterT);
+        }
+
+        /// <summary>
+        /// Command is executing
+        /// </summary>
+        public bool IsExecuting { get; private set; }
+
+        /// <summary>
+        /// ExecuteAsync
+        /// </summary>
+        /// <param name="parameter"></param>
+        /// <returns></returns>
+        public async Task ExecuteAsync(T parameter)
+        {
+            if (CanExecute(parameter))
+            {
+                if (this.execute is not null)
+                {
+                    try
+                    {
+                        IsExecuting = true;
+                        await this.execute(parameter);
+                    }
+                    finally
+                    {
+                        IsExecuting = false;
+                    }
+                }
+            }
+
+            RaiseCanExecuteChanged();
         }
     }
 }
