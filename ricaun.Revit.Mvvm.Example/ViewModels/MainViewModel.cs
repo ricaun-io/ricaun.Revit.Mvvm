@@ -27,6 +27,7 @@ namespace ricaun.Revit.Mvvm.Example.ViewModels
             }, () => { return !AsyncAddCommand.IsExecuting; });
             RemoveCommand = new RelayCommand<ItemModel>((item) =>
             {
+                Model.Item = null;
                 Model.Items.Remove(item);
                 if (Model.Items.Count > 0)
                     Model.Item = Model.Items[0];
@@ -45,6 +46,7 @@ namespace ricaun.Revit.Mvvm.Example.ViewModels
             AsyncRemoveCommand = new AsyncRelayCommand<ItemModel>(async (item) =>
             {
                 await Task.Delay(1000);
+                Model.Item = null;
                 Model.Items.Remove(item);
             });
 
