@@ -70,9 +70,7 @@ namespace ricaun.Revit.Mvvm
         public void Execute(object parameter)
         {
             if (CanExecute(parameter))
-            {
                 this.execute();
-            }
         }
     }
 }
