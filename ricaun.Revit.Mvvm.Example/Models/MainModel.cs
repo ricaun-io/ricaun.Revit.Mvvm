@@ -14,7 +14,7 @@
         //    }
         //}
     }
-    public class ItemModel : ObservableObject
+    public class ItemModel
     {
         public string Name { get; set; }
         public override string ToString()
