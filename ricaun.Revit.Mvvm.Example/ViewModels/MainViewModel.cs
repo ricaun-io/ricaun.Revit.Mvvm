@@ -31,7 +31,6 @@ namespace ricaun.Revit.Mvvm.Example.ViewModels
                 Model.Items.Remove(item);
                 if (Model.Items.Count > 0)
                     Model.Item = Model.Items[0];
-                //RefreshProperty(nameof(Model));
             }
             , (item) => { return item != null; }
             );
