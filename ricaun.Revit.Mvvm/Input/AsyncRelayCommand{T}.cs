@@ -16,7 +16,7 @@ namespace ricaun.Revit.Mvvm
     /// in the <see cref="Execute(T)"/> and <see cref="CanExecute(T)"/> callback methods.
     /// </summary>
     /// <typeparam name="T">The type of parameter being passed as input to the callbacks.</typeparam>
-    public sealed class AsyncRelayCommand<T> : IAsyncRelayCommand<T>
+    public sealed class AsyncRelayCommand<T> : ObservableObject, IAsyncRelayCommand<T>
     {
         /// <summary>
         /// The <see cref="Action"/> to invoke when <see cref="Execute(T)"/> is used.
@@ -28,6 +28,22 @@ namespace ricaun.Revit.Mvvm
         /// The optional action to invoke when <see cref="CanExecute(T)"/> is used.
         /// </summary>
         private readonly Func<T, bool> canExecute;
+
+        /// <summary>
+        /// The optional action to Handle Exception
+        /// </summary>
+        private Action<Exception> handleException;
+
+        /// <summary>
+        /// Set Exception Handler 
+        /// </summary>
+        /// <param name="handleException"></param>
+        /// <returns></returns>
+        public AsyncRelayCommand<T> SetExceptionHandler(Action<Exception> handleException)
+        {
+            this.handleException = handleException;
+            return this;
+        }
 
         /// <summary>
         /// CanExecuteChanged
@@ -104,7 +120,7 @@ namespace ricaun.Revit.Mvvm
         /// <param name="parameter"></param>
         public void Execute(T parameter)
         {
-            this.ExecuteAsync(parameter).Run();
+            this.ExecuteAsync(parameter).Run(handleException);
         }
 
         /// <summary>

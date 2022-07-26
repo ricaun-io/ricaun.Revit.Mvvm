@@ -25,6 +25,21 @@ namespace ricaun.Revit.Mvvm
         private readonly Func<bool> canExecute;
 
         /// <summary>
+        /// The optional action to Handle Exception
+        /// </summary>
+        private Action<Exception> handleException;
+
+        /// <summary>
+        /// Set Exception Handler 
+        /// </summary>
+        /// <param name="handleException"></param>
+        /// <returns></returns>
+        public RelayCommand SetExceptionHandler(Action<Exception> handleException)
+        {
+            this.handleException = handleException;
+            return this;
+        }
+        /// <summary>
         /// CanExecuteChanged
         /// </summary>
         public event EventHandler CanExecuteChanged
@@ -70,7 +85,16 @@ namespace ricaun.Revit.Mvvm
         public void Execute(object parameter)
         {
             if (CanExecute(parameter))
-                this.execute();
+            {
+                try
+                {
+                    this.execute();
+                }
+                catch (Exception ex)
+                {
+                    handleException?.Invoke(ex);
+                }
+            }
         }
     }
 }

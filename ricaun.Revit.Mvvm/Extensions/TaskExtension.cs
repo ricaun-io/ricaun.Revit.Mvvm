@@ -10,9 +10,9 @@ namespace ricaun.Revit.Mvvm.Extensions
     /// <summary>
     /// TaskExtension
     /// </summary>
-    public static class TaskExtension
+    internal static class TaskExtension
     {
-        public static async void Run(this Task task, IErrorHandler handler = null)
+        internal static async void Run(this Task task, Action<Exception> handleException)
         {
             try
             {
@@ -20,12 +20,8 @@ namespace ricaun.Revit.Mvvm.Extensions
             }
             catch (Exception ex)
             {
-                handler?.HandleError(ex);
+                handleException?.Invoke(ex);
             }
-        }
-        public interface IErrorHandler
-        {
-            void HandleError(Exception ex);
         }
     }
 }

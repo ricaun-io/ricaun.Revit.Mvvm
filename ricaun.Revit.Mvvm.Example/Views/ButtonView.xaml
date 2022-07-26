@@ -8,7 +8,10 @@
 	mc:Ignorable="d" 
 	>
 
-    <Grid Margin="15">
-        <Button Command="{Binding Command}" CommandParameter="{Binding Text}">Click Me!</Button>
-    </Grid>
+    <StackPanel Margin="15">
+        <Button Height="24" Width="160" Command="{Binding Command}" >Command</Button>
+        <Button Height="24" Command="{Binding CommandObject}" CommandParameter="{Binding Text}">CommandObject</Button>
+        <Button Height="24" Command="{Binding AsyncCommand}" >AsyncCommand</Button>
+        <Button Height="24" Command="{Binding AsyncCommandObject}" CommandParameter="{Binding Text}">AsyncCommandObject</Button>
+    </StackPanel>
 </Window>
