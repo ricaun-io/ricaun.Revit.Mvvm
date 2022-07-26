@@ -13,5 +13,9 @@
         <Button Height="24" Command="{Binding CommandObject}" CommandParameter="{Binding Text}">CommandObject</Button>
         <Button Height="24" Command="{Binding AsyncCommand}" >AsyncCommand</Button>
         <Button Height="24" Command="{Binding AsyncCommandObject}" CommandParameter="{Binding Text}">AsyncCommandObject</Button>
+        <WrapPanel>
+            <TextBlock Text="{Binding AsyncCommand.IsExecuting}"></TextBlock>
+            <TextBlock Text="{Binding AsyncCommandObject.IsExecuting}"></TextBlock>
+        </WrapPanel>
     </StackPanel>
 </Window>

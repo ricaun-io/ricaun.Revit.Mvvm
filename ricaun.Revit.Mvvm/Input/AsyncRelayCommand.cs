@@ -15,7 +15,7 @@ namespace ricaun.Revit.Mvvm
     /// action, and providing an <see cref="IsExecuting"/> property that notifies changes when
     /// <see cref="ExecuteAsync"/> is invoked and when the returned <see cref="Task"/> completes.
     /// </summary>
-    public sealed class AsyncRelayCommand : IAsyncRelayCommand
+    public sealed class AsyncRelayCommand : ObservableObject, IAsyncRelayCommand
     {
         /// <summary>
         /// The <see cref="Action"/> to invoke when <see cref="Execute"/> is used.
