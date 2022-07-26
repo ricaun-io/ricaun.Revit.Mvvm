@@ -15,7 +15,7 @@ namespace ricaun.Revit.Mvvm
     /// action, and providing an <see cref="IsExecuting"/> property that notifies changes when
     /// <see cref="ExecuteAsync"/> is invoked and when the returned <see cref="Task"/> completes.
     /// </summary>
-    public sealed class AsyncRelayCommand : ObservableObject, IAsyncRelayCommand
+    public sealed class AsyncRelayCommand : IAsyncRelayCommand
     {
         /// <summary>
         /// The <see cref="Action"/> to invoke when <see cref="Execute"/> is used.
@@ -26,6 +26,22 @@ namespace ricaun.Revit.Mvvm
         /// The optional action to invoke when <see cref="CanExecute"/> is used.
         /// </summary>
         private readonly Func<bool> canExecute;
+
+        /// <summary>
+        /// The optional action to Handle Exception
+        /// </summary>
+        private Action<Exception> handleException;
+
+        /// <summary>
+        /// Set Exception Handler 
+        /// </summary>
+        /// <param name="handleException"></param>
+        /// <returns></returns>
+        public AsyncRelayCommand SetExceptionHandler(Action<Exception> handleException)
+        {
+            this.handleException = handleException;
+            return this;
+        }
 
         /// <summary>
         /// CanExecuteChanged
@@ -39,7 +55,7 @@ namespace ricaun.Revit.Mvvm
         /// <summary>
         /// RaiseCanExecuteChanged
         /// </summary>
-        public void RaiseCanExecuteChanged()
+        private void RaiseCanExecuteChanged()
         {
             CommandManager.InvalidateRequerySuggested();
         }
@@ -83,7 +99,7 @@ namespace ricaun.Revit.Mvvm
         /// <param name="parameter"></param>
         public void Execute(object parameter)
         {
-            this.ExecuteAsync(parameter).Run();
+            this.ExecuteAsync(parameter).Run(handleException);
         }
 
         /// <summary>
@@ -110,11 +126,10 @@ namespace ricaun.Revit.Mvvm
                     finally
                     {
                         IsExecuting = false;
+                        RaiseCanExecuteChanged();
                     }
                 }
             }
-
-            RaiseCanExecuteChanged();
         }
     }
 }

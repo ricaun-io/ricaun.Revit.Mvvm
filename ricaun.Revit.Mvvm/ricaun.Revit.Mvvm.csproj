@@ -2,11 +2,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
     <OutputType>Library</OutputType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <UseWPF>true</UseWPF>
-    <LangVersion>9</LangVersion>
+    <LangVersion>latest</LangVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
     <Configurations>Debug; Release</Configurations>
@@ -52,8 +51,8 @@
     </When>
     <Otherwise>
       <PropertyGroup>
-        <RevitVersion>2017</RevitVersion>
-        <TargetFramework>net46</TargetFramework>
+        <RevitVersion>2015</RevitVersion>
+        <TargetFramework>net45</TargetFramework>
       </PropertyGroup>
     </Otherwise>
   </Choose>
@@ -77,7 +76,7 @@
 
   <PropertyGroup>
     <PackageId>ricaun.Revit.Mvvm</PackageId>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <ProjectGuid>{54A2E2C0-8117-41F9-BC25-463ADF77E7DC}</ProjectGuid>
   </PropertyGroup>
 
@@ -85,7 +84,8 @@
     <PackageAssemblyVersion>.$(Version)</PackageAssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition="$(Configuration.Contains('Debug'))">
-    <Revision>$([MSBuild]::Divide($([System.DateTime]::get_Now().get_TimeOfDay().get_TotalSeconds()), 4).ToString('F0'))</Revision>
+    <IncludePackageReferencesDuringMarkupCompilation>false</IncludePackageReferencesDuringMarkupCompilation>
+    <Revision>$([MSBuild]::Divide($([System.DateTime]::Now.TimeOfDay.TotalSeconds), 4).ToString('F0'))</Revision>
     <PackageAssemblyVersion>.Dev.$(Version).$(Revision)</PackageAssemblyVersion>
   </PropertyGroup>
 
@@ -97,7 +97,7 @@
 
   <PropertyGroup>
     <AssemblyName>$(PackageId)$(PackageAssemblyVersion)</AssemblyName>
-    <Description>Mvvm for Revit with RelayCommand and ObservableObject to use with PropertyChanged.Fody package.</Description>
+    <Description>Mvvm for Revit with RelayCommand, AsyncRelayCommand, ObservableObject and ObservableCollection to use with PropertyChanged.Fody package.</Description>
     <Product>$(PackageId)</Product>
     <Copyright>Copyright © $(CopyrightYears) $(Company)</Copyright>
   </PropertyGroup>
@@ -143,7 +143,7 @@
   </ItemGroup>
   <!-- Fody -->
   <ItemGroup>
-    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" IncludeAssets="compile; build" PrivateAssets="all" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.*" IncludeAssets="compile; build" PrivateAssets="all" />
   </ItemGroup>
   <PropertyGroup>
     <WeaverConfiguration>

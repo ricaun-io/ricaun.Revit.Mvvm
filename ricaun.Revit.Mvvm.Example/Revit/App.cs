@@ -5,6 +5,7 @@ using System;
 
 namespace ricaun.Revit.Mvvm.Example.Revit
 {
+
     [Console]
     public class App : IExternalApplication
     {
@@ -12,9 +13,9 @@ namespace ricaun.Revit.Mvvm.Example.Revit
         public Result OnStartup(UIControlledApplication application)
         {
             ribbonPanel = application.CreatePanel("Mvvm");
-            ribbonPanel.AddPushButton<Commands.Command>()
-                .SetText("Example")
-                .SetLargeImage(Properties.Resource.Icon)
+            ribbonPanel.CreatePushButton<Commands.Command>()
+                .SetText(Properties.Resource.Text)
+                .SetLargeImage("/UIFrameworkRes;component/ribbon/images/revit.ico")
                 .SetToolTip(LanguageExtension.GetLanguageType().ToString());
 
             return Result.Succeeded;

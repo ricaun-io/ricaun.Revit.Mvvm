@@ -30,6 +30,22 @@ namespace ricaun.Revit.Mvvm
         private readonly Func<T, bool> canExecute;
 
         /// <summary>
+        /// The optional action to Handle Exception
+        /// </summary>
+        private Action<Exception> handleException;
+
+        /// <summary>
+        /// Set Exception Handler 
+        /// </summary>
+        /// <param name="handleException"></param>
+        /// <returns></returns>
+        public AsyncRelayCommand<T> SetExceptionHandler(Action<Exception> handleException)
+        {
+            this.handleException = handleException;
+            return this;
+        }
+
+        /// <summary>
         /// CanExecuteChanged
         /// </summary>
         public event EventHandler CanExecuteChanged
@@ -41,7 +57,7 @@ namespace ricaun.Revit.Mvvm
         /// <summary>
         /// RaiseCanExecuteChanged
         /// </summary>
-        public void RaiseCanExecuteChanged()
+        private void RaiseCanExecuteChanged()
         {
             CommandManager.InvalidateRequerySuggested();
         }
@@ -104,7 +120,7 @@ namespace ricaun.Revit.Mvvm
         /// <param name="parameter"></param>
         public void Execute(T parameter)
         {
-            this.ExecuteAsync(parameter).Run();
+            this.ExecuteAsync(parameter).Run(handleException);
         }
 
         /// <summary>
@@ -141,11 +157,10 @@ namespace ricaun.Revit.Mvvm
                     finally
                     {
                         IsExecuting = false;
+                        RaiseCanExecuteChanged();
                     }
                 }
             }
-
-            RaiseCanExecuteChanged();
         }
     }
 }

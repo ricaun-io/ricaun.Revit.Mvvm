@@ -1,0 +1,17 @@
+﻿<Window x:Class="ricaun.Revit.Mvvm.Example.Views.ButtonView"
+	DataContext="{Binding RelativeSource={RelativeSource Self}}"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:local="clr-namespace:ricaun.Revit.Mvvm.Example.Views"
+	mc:Ignorable="d" 
+	>
+
+    <StackPanel Margin="15">
+        <Button Height="24" Width="160" Command="{Binding Command}" >Command</Button>
+        <Button Height="24" Command="{Binding CommandObject}" CommandParameter="{Binding Text}">CommandObject</Button>
+        <Button Height="24" Command="{Binding AsyncCommand}" >AsyncCommand</Button>
+        <Button Height="24" Command="{Binding AsyncCommandObject}" CommandParameter="{Binding Text}">AsyncCommandObject</Button>
+    </StackPanel>
+</Window>

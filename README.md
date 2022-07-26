@@ -1,8 +1,8 @@
 # ricaun.Revit.Mvvm
 
-Mvvm for Revit with `RelayCommand` and `ObservableObject` to use with [PropertyChanged.Fody](https://github.com/Fody/PropertyChanged) package.
+Mvvm for Revit with `RelayCommand`, `AsyncRelayCommand`, `ObservableObject` and `ObservableCollection` to use with [PropertyChanged.Fody](https://github.com/Fody/PropertyChanged) package.
 
-[![Revit 2017](https://img.shields.io/badge/Revit-2017+-blue.svg)](../..)
+[![Revit 2015](https://img.shields.io/badge/Revit-2015+-blue.svg)](../..)
 [![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blue)](../..)
 [![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://nuke.build/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -14,20 +14,54 @@ Mvvm for Revit with `RelayCommand` and `ObservableObject` to use with [PropertyC
 
 * [Latest release](../../releases/latest)
 
-## Example
+## ricaun.Revit.Mvvm
+### IRelayCommand & IAsyncRelayCommand
+```C#
+public IRelayCommand Command { get; }
+public IAsyncRelayCommand AsyncCommand { get; }
+```
 
+### RelayCommand & RelayCommand<T>
+```C#
+Command = new RelayCommand(() =>
+{
+    // Execute something
+});
+Command = new RelayCommand<string>((text) =>
+{
+    // Execute something with text
+});
+```
+
+### AsyncRelayCommand & AsyncRelayCommand<T>
+```C#
+AsyncCommand = new AsyncRelayCommand(async () =>
+{
+    // Execute something async
+    await Task.Delay(1000);
+});
+AsyncCommand = new AsyncRelayCommand<string>(async (text) =>
+{
+    // Execute something async with text
+    await Task.Delay(1000);
+});
+```
+
+### PropertyChanged.Fody
+
+Insert this configuration to enable the `PropertyChanged.Fody` in the `csproj`.
 ```xml
-  <!-- Fody -->
-  <ItemGroup>
-    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" IncludeAssets="compile; build" PrivateAssets="all" />
-  </ItemGroup>
-  <PropertyGroup>
+<!-- Fody -->
+<ItemGroup>
+    <PackageReference Include="PropertyChanged.Fody" Version="3.*" IncludeAssets="compile; build" PrivateAssets="all" />
+</ItemGroup>
+<PropertyGroup>
     <WeaverConfiguration >
-      <Weavers>
-        <PropertyChanged/>
-      </Weavers>
+        <Weavers>
+            <PropertyChanged/>
+        </Weavers>
     </WeaverConfiguration>
-  </PropertyGroup>
+</PropertyGroup>
 ```
 
 ## License

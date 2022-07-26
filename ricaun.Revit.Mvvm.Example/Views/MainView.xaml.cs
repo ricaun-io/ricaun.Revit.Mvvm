@@ -14,7 +14,7 @@ namespace ricaun.Revit.Mvvm.Example.Views
             InitializeWindow();
             this.Title = nameof(MainView);
             this.DataContext = viewModel;
-            this.Icon = Properties.Resource.Icon.GetBitmapSource();
+            this.Icon = Properties.Resource.Text.GetBitmapSource();
         }
 
         #region InitializeWindow
