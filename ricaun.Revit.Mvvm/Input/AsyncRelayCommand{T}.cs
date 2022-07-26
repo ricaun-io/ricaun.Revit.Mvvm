@@ -141,11 +141,10 @@ namespace ricaun.Revit.Mvvm
                     finally
                     {
                         IsExecuting = false;
+                        RaiseCanExecuteChanged();
                     }
                 }
             }
-
-            RaiseCanExecuteChanged();
         }
     }
 }

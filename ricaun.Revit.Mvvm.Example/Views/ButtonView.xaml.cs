@@ -1,33 +1,35 @@
-﻿using ricaun.Revit.Mvvm.Example.ViewModels;
-using ricaun.Revit.UI;
-using System;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 
 namespace ricaun.Revit.Mvvm.Example.Views
 {
-    public partial class MainView : Window
+    public partial class ButtonView : Window
     {
-        public MainView(MainViewModel viewModel)
+        public string Text { get; set; } = string.Empty;
+        public IRelayCommand Command { get; private set; } = new AsyncRelayCommand<object>(async (text) =>
+        {
+            Console.WriteLine(text);
+            await Task.Delay(500);
+            Console.WriteLine("Exception");
+            throw new Exception();
+            await Task.Delay(500);
+            Console.WriteLine("Never Show");
+        });
+        public ButtonView()
         {
             InitializeComponent();
             InitializeWindow();
-            this.Title = nameof(MainView);
-            this.DataContext = viewModel;
-            this.Icon = Properties.Resource.Text.GetBitmapSource();
         }
 
         #region InitializeWindow
         private void InitializeWindow()
         {
-            this.MinWidth = 240;
-            this.MinHeight = 240;
             this.SizeToContent = SizeToContent.WidthAndHeight;
             this.ShowInTaskbar = false;
             this.ResizeMode = ResizeMode.NoResize;
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             new System.Windows.Interop.WindowInteropHelper(this) { Owner = Autodesk.Windows.ComponentManager.ApplicationWindow };
-            this.PreviewKeyDown += (s, e) => { if (e.Key == System.Windows.Input.Key.Escape) Close(); };
         }
         #endregion
     }
