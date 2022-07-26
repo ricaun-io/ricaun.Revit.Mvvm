@@ -15,7 +15,7 @@ namespace ricaun.Revit.Mvvm
     /// action, and providing an <see cref="IsExecuting"/> property that notifies changes when
     /// <see cref="ExecuteAsync"/> is invoked and when the returned <see cref="Task"/> completes.
     /// </summary>
-    public sealed class AsyncRelayCommand : IAsyncRelayCommand
+    public sealed class AsyncRelayCommand : ObservableObject, IAsyncRelayCommand
     {
         /// <summary>
         /// The <see cref="Action"/> to invoke when <see cref="Execute"/> is used.
@@ -30,7 +30,7 @@ namespace ricaun.Revit.Mvvm
         /// <summary>
         /// The optional action to Handle Exception
         /// </summary>
-        private Action<Exception> handleException;
+        public event Action<Exception> ExceptionHandler;
 
         /// <summary>
         /// Set Exception Handler 
@@ -39,7 +39,7 @@ namespace ricaun.Revit.Mvvm
         /// <returns></returns>
         public AsyncRelayCommand SetExceptionHandler(Action<Exception> handleException)
         {
-            this.handleException = handleException;
+            this.ExceptionHandler = handleException;
             return this;
         }
 
@@ -99,7 +99,7 @@ namespace ricaun.Revit.Mvvm
         /// <param name="parameter"></param>
         public void Execute(object parameter)
         {
-            this.ExecuteAsync(parameter).Run(handleException);
+            this.ExecuteAsync(parameter).Run(ExceptionHandler);
         }
 
         /// <summary>

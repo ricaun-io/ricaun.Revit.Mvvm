@@ -7,7 +7,7 @@ namespace ricaun.Revit.Mvvm
     /// <summary>
     /// An interface expanding <see cref="IAsyncRelayCommand"/> to support asynchronous operations.
     /// </summary>
-    public interface IAsyncRelayCommand<T> : IAsyncRelayCommand
+    public interface IAsyncRelayCommand<T> : IAsyncRelayCommand, IRelayCommand<T>
     {
     }
 }

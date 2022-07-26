@@ -9,6 +9,9 @@ namespace ricaun.Revit.Mvvm
     /// </summary>
     public interface IAsyncRelayCommand : IRelayCommand
     {
+        /// <summary>
+        /// IsExecuting
+        /// </summary>
         bool IsExecuting { get; }
     }
 }

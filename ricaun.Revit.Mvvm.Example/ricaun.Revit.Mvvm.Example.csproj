@@ -83,7 +83,7 @@
 
   <PropertyGroup>
     <PackageId>ricaun.Revit.Mvvm.Example</PackageId>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <ProjectGuid>{38ff241e-f70a-4895-9236-9425a09f4b5e}</ProjectGuid>
   </PropertyGroup>
 
