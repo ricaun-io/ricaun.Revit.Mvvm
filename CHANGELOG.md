@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Changed to `net45`
 - Changed App Icon
+- Changed `RaiseCanExecuteChanged` to private
 ### Fixed
 - Fix `RaiseCanExecuteChanged` not trigger `Exception`
 

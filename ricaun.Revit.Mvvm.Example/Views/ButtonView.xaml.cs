@@ -7,24 +7,24 @@ namespace ricaun.Revit.Mvvm.Example.Views
     public partial class ButtonView : Window
     {
         public string Text { get; set; } = "Not Null";
-        public IRelayCommand AsyncCommandObject { get; private set; } = new AsyncRelayCommand<object>(async (obj) =>
+        public IRelayCommand AsyncCommandObject { get; } = new AsyncRelayCommand<object>(async (obj) =>
         {
             await Task.Delay(500);
             int i = 1; i /= 0;
         }).SetExceptionHandler(ExceptionHandler);
 
-        public IRelayCommand AsyncCommand { get; private set; } = new AsyncRelayCommand(async () =>
+        public IRelayCommand AsyncCommand { get; } = new AsyncRelayCommand(async () =>
         {
             await Task.Delay(500);
             int i = 1; i /= 0;
         }).SetExceptionHandler(ExceptionHandler);
 
-        public IRelayCommand CommandObject { get; private set; } = new RelayCommand<object>((obj) =>
+        public IRelayCommand CommandObject { get; } = new RelayCommand<object>((obj) =>
         {
             int i = 1; i /= 0;
         }).SetExceptionHandler(ExceptionHandler);
 
-        public IRelayCommand Command { get; private set; } = new RelayCommand(() =>
+        public IRelayCommand Command { get; } = new RelayCommand(() =>
         {
             var task = Task.Run(async () =>
             {
