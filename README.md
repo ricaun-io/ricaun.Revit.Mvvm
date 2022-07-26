@@ -1,8 +1,8 @@
 # ricaun.Revit.Mvvm
 
-Mvvm for Revit with `RelayCommand` and `ObservableObject` to use with [PropertyChanged.Fody](https://github.com/Fody/PropertyChanged) package.
+Mvvm for Revit with `RelayCommand`, `AsyncRelayCommand`, `ObservableObject` and `ObservableCollection` to use with [PropertyChanged.Fody](https://github.com/Fody/PropertyChanged) package.
 
-[![Revit 2017](https://img.shields.io/badge/Revit-2017+-blue.svg)](../..)
+[![Revit 2015](https://img.shields.io/badge/Revit-2015+-blue.svg)](../..)
 [![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blue)](../..)
 [![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://nuke.build/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -16,10 +16,13 @@ Mvvm for Revit with `RelayCommand` and `ObservableObject` to use with [PropertyC
 
 ## Example
 
+### PropertyChanged.Fody
+
+To
 ```xml
   <!-- Fody -->
   <ItemGroup>
-    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0" IncludeAssets="compile; build" PrivateAssets="all" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.*" IncludeAssets="compile; build" PrivateAssets="all" />
   </ItemGroup>
   <PropertyGroup>
     <WeaverConfiguration >
