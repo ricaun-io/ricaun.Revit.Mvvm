@@ -24,7 +24,7 @@ namespace ricaun.Revit.Mvvm.Example.Views
             int i = 1; i /= 0;
         }).SetExceptionHandler(ExceptionHandler);
 
-        public IRelayCommand Command { get; } = new RelayCommand(() =>
+        public RelayCommand Command { get; } = new RelayCommand(() =>
         {
             var task = Task.Run(async () =>
             {
@@ -43,6 +43,7 @@ namespace ricaun.Revit.Mvvm.Example.Views
         {
             InitializeComponent();
             InitializeWindow();
+            Command.SetExceptionHandler((ex) => { Console.WriteLine(ex); });
         }
 
         #region InitializeWindow

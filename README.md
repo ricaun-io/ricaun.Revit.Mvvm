@@ -47,9 +47,22 @@ AsyncCommand = new AsyncRelayCommand<string>(async (text) =>
 });
 ```
 
-### PropertyChanged.Fody
+### ExceptionHandler
+```C#
+Command.ExceptionHandler += (ex) => { Console.WriteLine(ex); };
+
+// or
+
+Command = new RelayCommand(() =>
+{
+    // Execute something
+}).SetExceptionHandler((ex) => { Console.WriteLine(ex); });
+```
+
+## PropertyChanged.Fody
 
 Insert this configuration to enable the `PropertyChanged.Fody` in the `csproj`.
+
 ```xml
 <!-- Fody -->
 <ItemGroup>

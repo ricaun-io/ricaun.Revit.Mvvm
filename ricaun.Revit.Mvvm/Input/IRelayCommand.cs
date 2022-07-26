@@ -1,6 +1,7 @@
 // This file is inspired from the Microsoft.Toolkit.Mvvm library
 // https://github.com/CommunityToolkit/WindowsCommunityToolkit
 
+using System;
 using System.Windows.Input;
 
 namespace ricaun.Revit.Mvvm
@@ -11,9 +12,9 @@ namespace ricaun.Revit.Mvvm
     /// </summary>
     public interface IRelayCommand : ICommand
     {
-        ///// <summary>
-        ///// Notifies that the <see cref="ICommand.CanExecute"/> property has changed.
-        ///// </summary>
-        //void NotifyCanExecuteChanged();
+        /// <summary>
+        /// The optional action to Handle Exception
+        /// </summary>
+        public event Action<Exception> ExceptionHandler;
     }
 }

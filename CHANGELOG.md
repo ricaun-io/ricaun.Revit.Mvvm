@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.0.5] / 2022-07-26
 ### Fixed
 - Add `ObservableObject` in `AsyncRelayCommand` to update `IsExecuting` 
+### Changed
+- Change `ExceptionHandler` to `IRelayCommand`
 
 ## [1.0.4] / 2022-07-26
 ### Features

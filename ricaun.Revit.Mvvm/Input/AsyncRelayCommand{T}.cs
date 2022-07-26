@@ -32,7 +32,7 @@ namespace ricaun.Revit.Mvvm
         /// <summary>
         /// The optional action to Handle Exception
         /// </summary>
-        private Action<Exception> handleException;
+        public event Action<Exception> ExceptionHandler;
 
         /// <summary>
         /// Set Exception Handler 
@@ -41,7 +41,7 @@ namespace ricaun.Revit.Mvvm
         /// <returns></returns>
         public AsyncRelayCommand<T> SetExceptionHandler(Action<Exception> handleException)
         {
-            this.handleException = handleException;
+            this.ExceptionHandler = handleException;
             return this;
         }
 
@@ -120,7 +120,7 @@ namespace ricaun.Revit.Mvvm
         /// <param name="parameter"></param>
         public void Execute(T parameter)
         {
-            this.ExecuteAsync(parameter).Run(handleException);
+            this.ExecuteAsync(parameter).Run(ExceptionHandler);
         }
 
         /// <summary>
