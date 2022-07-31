@@ -10,11 +10,36 @@ Mvvm for Revit with `RelayCommand`, `AsyncRelayCommand`, `ObservableObject` and 
 [![Develop](../../actions/workflows/Develop.yml/badge.svg)](../../actions)
 [![Release](https://img.shields.io/nuget/v/ricaun.Revit.Mvvm?logo=nuget&label=release&color=blue)](https://www.nuget.org/packages/ricaun.Revit.Mvvm)
 
-## Release
+## Installation
 
-* [Latest release](../../releases/latest)
+Insert this configuration to enable and install the package [ricaun.Revit.Mvvm](https://www.nuget.org/packages/ricaun.Revit.Mvvm) in the `csproj`.
 
-## ricaun.Revit.Mvvm
+```xml
+<ItemGroup>
+    <PackageReference Include="ricaun.Revit.Mvvm" Version="*" />
+</ItemGroup>
+```
+
+### PropertyChanged.Fody
+
+Insert this configuration to enable and install the package [PropertyChanged.Fody](https://github.com/Fody/PropertyChanged) in the `csproj`.
+
+```xml
+<!-- Fody -->
+<ItemGroup>
+    <PackageReference Include="PropertyChanged.Fody" Version="3.*" PrivateAssets="all" />
+</ItemGroup>
+<PropertyGroup>
+    <WeaverConfiguration >
+        <Weavers>
+            <PropertyChanged/>
+        </Weavers>
+    </WeaverConfiguration>
+</PropertyGroup>
+```
+
+## Features
+
 ### IRelayCommand & IAsyncRelayCommand
 ```C#
 public IRelayCommand Command { get; }
@@ -59,23 +84,9 @@ Command = new RelayCommand(() =>
 }).SetExceptionHandler((ex) => { Console.WriteLine(ex); });
 ```
 
-## PropertyChanged.Fody
+## Release
 
-Insert this configuration to enable the `PropertyChanged.Fody` in the `csproj`.
-
-```xml
-<!-- Fody -->
-<ItemGroup>
-    <PackageReference Include="PropertyChanged.Fody" Version="3.*" IncludeAssets="compile; build" PrivateAssets="all" />
-</ItemGroup>
-<PropertyGroup>
-    <WeaverConfiguration >
-        <Weavers>
-            <PropertyChanged/>
-        </Weavers>
-    </WeaverConfiguration>
-</PropertyGroup>
-```
+* [Latest release](../../releases/latest)
 
 ## License
 
