@@ -7,12 +7,12 @@ namespace ricaun.Revit.Mvvm
     /// added, removed, or when the whole list is refreshed.
     /// </summary>
     /// <typeparam name="T">The type of elements in the collection.</typeparam>
-    public class ObservableCollection<T> : System.Collections.ObjectModel.ObservableCollection<T>
+    class ObservableCollection<T> : System.Collections.ObjectModel.ObservableCollection<T>
     {
         /// <summary>
         /// Initializes a new instance of the System.Collections.ObjectModel.ObservableCollection`1 class.
         /// </summary>
-        public ObservableCollection()
+        ObservableCollection()
         {
         }
 
