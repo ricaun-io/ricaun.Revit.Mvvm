@@ -1,4 +1,6 @@
-﻿namespace ricaun.Revit.Mvvm.Example.Models
+﻿using System.Collections.ObjectModel;
+
+namespace ricaun.Revit.Mvvm.Example.Models
 {
     public class MainModel : ObservableObject
     {

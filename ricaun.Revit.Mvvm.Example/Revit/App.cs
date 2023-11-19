@@ -6,7 +6,7 @@ using System;
 namespace ricaun.Revit.Mvvm.Example.Revit
 {
 
-    [Console]
+    [AppLoader]
     public class App : IExternalApplication
     {
         private static RibbonPanel ribbonPanel;
