@@ -1,13 +1,12 @@
 # ricaun.Revit.Mvvm
 
-Mvvm for Revit with `RelayCommand`, `AsyncRelayCommand`, `ObservableObject` and `ObservableCollection` to use with [PropertyChanged.Fody](https://github.com/Fody/PropertyChanged) package.
+Mvvm for Revit with `RelayCommand`, `AsyncRelayCommand` and `ObservableObject` to use with [PropertyChanged.Fody](https://github.com/Fody/PropertyChanged) package.
 
 [![Revit 2015](https://img.shields.io/badge/Revit-2015+-blue.svg)](../..)
 [![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blue)](../..)
 [![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://nuke.build/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Publish](../../actions/workflows/Publish.yml/badge.svg)](../../actions)
-[![Develop](../../actions/workflows/Develop.yml/badge.svg)](../../actions)
+[![Build](../../actions/workflows/Build.yml/badge.svg)](../../actions)
 [![Release](https://img.shields.io/nuget/v/ricaun.Revit.Mvvm?logo=nuget&label=release&color=blue)](https://www.nuget.org/packages/ricaun.Revit.Mvvm)
 
 ## Installation
