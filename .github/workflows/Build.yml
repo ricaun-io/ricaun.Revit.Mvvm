@@ -25,4 +25,6 @@ jobs:
           GitHubToken: ${{ secrets.GITHUB_TOKEN }}
           SignFile: ${{ secrets.SIGN_FILE }}
           SignPassword: ${{ secrets.SIGN_PASSWORD }}
+          NugetApiUrl: ${{ secrets.NUGET_API_URL }}
+          NugetApiKey: ${{ secrets.NUGET_API_KEY }}
           InstallationFiles: ${{ secrets.INSTALLATION_FILES }}
