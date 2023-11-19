@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] / 2023-11-19
+### Features
+- Add `net6.0-windows` support
+### Changed
+- Remove `ObservableCollection`, use `System.Collections.ObjectModel.ObservableCollection` instead.
+
 ## [1.0.5] / 2022-07-26
 ### Fixed
 - Add `ObservableObject` in `AsyncRelayCommand` to update `IsExecuting` 
@@ -49,6 +55,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - RelayCommand / RelayCommand(T)
 
 [vNext]: ../../compare/1.0.0...HEAD
+[1.1.0]: ../../compare/1.0.5...1.1.0
 [1.0.5]: ../../compare/1.0.4...1.0.5
 [1.0.4]: ../../compare/1.0.3...1.0.4
 [1.0.3]: ../../compare/1.0.2...1.0.3
